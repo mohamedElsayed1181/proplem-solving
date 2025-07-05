@@ -421,18 +421,18 @@
 
 //   }())
 
-{
-  /* <script>
-    const theme=localStorge.getItem('themث')
-    if (them==="dark"){
-        const root =document.documentElement;
-        root.style.setProperty('--bg-color','#ffff')
-        root.style.setProperty('--title-color','#0000')
-        root.style.setProperty('--thead-color','blue')
+// {
+//   /* <script>
+//     const theme=localStorge.getItem('themث')
+//     if (them==="dark"){
+//         const root =document.documentElement;
+//         root.style.setProperty('--bg-color','#ffff')
+//         root.style.setProperty('--title-color','#0000')
+//         root.style.setProperty('--thead-color','blue')
 
-    }
-//</script> */
-}
+//     }
+// //</script> */
+// }
 
 // :root{
 //     --bg-color:#ffff;
