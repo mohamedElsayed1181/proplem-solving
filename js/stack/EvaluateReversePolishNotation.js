@@ -57,3 +57,6 @@ class Solution {
 
 const s = new Solution();
 console.log(s.evalRPN(["1", "2", "+", "3", "*", "4", "-"])); 
+
+
+console.log("2"===2);
