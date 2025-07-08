@@ -42,3 +42,4 @@ class Solution {
 }
 const sol = new Solution();
 console.log(sol.generateParenthesis(3));
+
