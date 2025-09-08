@@ -962,8 +962,6 @@
 ////////////////////////////////////////
 // stack
 
-
-
 // class MinStack {
 //   constructor() {
 //     this.stack = [];    //main stack
@@ -992,10 +990,6 @@
 //   }
 // }
 
-
-
-
-
 // class MinStack{
 //   constructor(){
 //     this.stack=[];
@@ -1021,14 +1015,453 @@
 //   }
 // }
 // const s = new MinStack();
-// s.push(5);  
-// s.push(3);  
-// s.push(7);  
+// s.push(5);
+// s.push(3);
+// s.push(7);
 // s.push(2);
-// console.log(s.getMin());  
-// s.pop(); 
+// console.log(s.getMin());
+// s.pop();
 
-
-// console.log(s.getMin()); 
+// console.log(s.getMin());
 
 // console.log(s.top());
+
+// linkedList
+//Singly Linked List
+// تعريف الـ Node
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
+
+// // تعريف الـ Linked List
+// class LinkedList {
+//   constructor() {
+//     this.head = null;
+//   }
+
+//   // ✅ 1. إضافة في الآخر
+//   append(value) {
+//     const newNode = new Node(value);
+//     if (!this.head) {
+//       this.head = newNode;
+//       return;
+//     }
+
+//     let current = this.head;
+//     while (current.next) {
+//       current = current.next;
+//     }
+
+//     current.next = newNode;
+//   }
+
+//   // ✅ 2. إضافة في الأول
+//   prepend(value) {
+//     const newNode = new Node(value);
+//     newNode.next = this.head;
+//     this.head = newNode;
+//   }
+
+//   // ✅ 3. طباعة القائمة
+//   print() {
+//     let current = this.head;
+//     const values = [];
+//     while (current) {
+//       values.push(current.value);
+//       current = current.next;
+//     }
+//     console.log(values.join(" → "));
+//   }
+
+//   // ✅ 4. إدراج في موقع معين
+//   insertAt(index, value) {
+//     if (index === 0) return this.prepend(value);
+
+//     const newNode = new Node(value);
+//     let current = this.head;
+//     let prev = null;
+//     let i = 0;
+
+//     while (current && i < index) {
+//       prev = current;
+//       current = current.next;
+//       i++;
+//     }
+
+//     if (i === index) {
+//       prev.next = newNode;
+//       newNode.next = current;
+//     } else {
+//       console.log("❌ Index خارج النطاق");
+//     }
+//   }
+
+//   // ✅ 5. حذف عنصر من مكان معين
+//   removeAt(index) {
+//     if (!this.head) return;
+
+//     if (index === 0) {
+//       this.head = this.head.next;
+//       return;
+//     }
+
+//     let current = this.head;
+//     let prev = null;
+//     let i = 0;
+
+//     while (current && i < index) {
+//       prev = current;
+//       current = current.next;
+//       i++;
+//     }
+
+//     if (current) {
+//       prev.next = current.next;
+//     } else {
+//       console.log("❌ Index خارج النطاق");
+//     }
+//   }
+
+//   // ✅ 6. البحث عن قيمة
+//   find(value) {
+//     let current = this.head;
+//     let index = 0;
+
+//     while (current) {
+//       if (current.value === value) return index;
+//       current = current.next;
+//       index++;
+//     }
+
+//     return -1; // مش موجود
+//   }
+
+//   // ✅ 7. جلب قيمة بموقع معين
+//   get(index) {
+//     let current = this.head;
+//     let i = 0;
+
+//     while (current) {
+//       if (i === index) return current.value;
+//       current = current.next;
+//       i++;
+//     }
+
+//     return null;
+//   }
+// }
+// const list = new LinkedList();
+
+// list.append(10);
+// list.append(20);
+// list.append(30);
+// list.print(); // 10 → 20 → 30
+
+// list.prepend(5);
+// list.print(); // 5 → 10 → 20 → 30
+
+// list.insertAt(2, 15);
+// list.print(); // 5 → 10 → 15 → 20 → 30
+
+// list.removeAt(3);
+// list.print(); // 5 → 10 → 15 → 30
+
+// console.log("Index of 15:", list.find(15)); // 2
+// console.log("Value at index 2:", list.get(2)); // 15
+
+// //Doubly Linked List
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//     this.prev = null;
+//   }
+// }
+
+// class DoublyLinkedList {
+//   constructor() {
+//     this.head = null;
+//     this.tail = null;
+//   }
+
+//   // ✅ إضافة في الآخر
+//   append(value) {
+//     const newNode = new Node(value);
+
+//     if (!this.head) {
+//       this.head = this.tail = newNode;
+//       return;
+//     }
+
+//     this.tail.next = newNode;
+//     newNode.prev = this.tail;
+//     this.tail = newNode;
+//   }
+
+//   // ✅ إضافة في الأول
+//   prepend(value) {
+//     const newNode = new Node(value);
+
+//     if (!this.head) {
+//       this.head = this.tail = newNode;
+//       return;
+//     }
+
+//     newNode.next = this.head;
+//     this.head.prev = newNode;
+//     this.head = newNode;
+//   }
+
+//   // ✅ طباعة من البداية للنهاية
+//   printForward() {
+//     let current = this.head;
+//     const result = [];
+//     while (current) {
+//       result.push(current.value);
+//       current = current.next;
+//     }
+//     console.log("Forward:", result.join(" ⇄ "));
+//   }
+
+//   // ✅ طباعة من النهاية للبداية
+//   printBackward() {
+//     let current = this.tail;
+//     const result = [];
+//     while (current) {
+//       result.push(current.value);
+//       current = current.prev;
+//     }
+//     console.log("Backward:", result.join(" ⇄ "));
+//   }
+
+//   // ✅ إدراج عنصر في فهرس معين
+//   insertAt(index, value) {
+//     if (index === 0) return this.prepend(value);
+
+//     const newNode = new Node(value);
+//     let current = this.head;
+//     let i = 0;
+
+//     while (current && i < index) {
+//       current = current.next;
+//       i++;
+//     }
+
+//     if (!current) {
+//       this.append(value);
+//       return;
+//     }
+
+//     const prevNode = current.prev;
+//     prevNode.next = newNode;
+//     newNode.prev = prevNode;
+//     newNode.next = current;
+//     current.prev = newNode;
+//   }
+
+//   // ✅ حذف عنصر من فهرس معين
+//   removeAt(index) {
+//     if (!this.head) return;
+
+//     let current = this.head;
+//     let i = 0;
+
+//     if (index === 0) {
+//       if (this.head === this.tail) {
+//         this.head = this.tail = null;
+//       } else {
+//         this.head = this.head.next;
+//         this.head.prev = null;
+//       }
+//       return;
+//     }
+
+//     while (current && i < index) {
+//       current = current.next;
+//       i++;
+//     }
+
+//     if (!current) return;
+
+//     if (current === this.tail) {
+//       this.tail = current.prev;
+//       this.tail.next = null;
+//     } else {
+//       const prev = current.prev;
+//       const next = current.next;
+
+//       prev.next = next;
+//       next.prev = prev;
+//     }
+//   }
+// }
+
+// const list = new DoublyLinkedList();
+
+// list.append(10);
+// list.append(20);
+// list.append(30);
+// list.printForward(); // Forward: 10 ⇄ 20 ⇄ 30
+// list.printBackward(); // Backward: 30 ⇄ 20 ⇄ 10
+
+// list.prepend(5);
+// list.printForward(); // Forward: 5 ⇄ 10 ⇄ 20 ⇄ 30
+
+// list.insertAt(2, 15);
+// list.printForward(); // Forward: 5 ⇄ 10 ⇄ 15 ⇄ 20 ⇄ 30
+
+// list.removeAt(3);
+// list.printForward(); // Forward: 5 ⇄ 10 ⇄ 15 ⇄ 30
+
+// list.printBackward(); // Backward: 30 ⇄ 15 ⇄ 10 ⇄ 5
+
+// //Circular Linked List
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
+
+// class CircularLinkedList {
+//   constructor() {
+//     this.head = null;
+//     this.tail = null;
+//   }
+
+//   // ✅ 1. إضافة عنصر في نهاية القائمة
+//   append(value) {
+//     const newNode = new Node(value);
+
+//     if (!this.head) {
+//       this.head = newNode;
+//       this.tail = newNode;
+//       newNode.next = this.head; // الدائرة تبدأ هنا
+//     } else {
+//       this.tail.next = newNode;
+//       this.tail = newNode;
+//       this.tail.next = this.head; // نخليها دائرة
+//     }
+//   }
+
+//   // ✅ 2. طباعة القائمة (توقف بعد دورة واحدة فقط)
+//   print() {
+//     if (!this.head) return console.log("Empty List");
+
+//     const values = [];
+//     let current = this.head;
+
+//     do {
+//       values.push(current.value);
+//       current = current.next;
+//     } while (current !== this.head); // نوقف لما نرجع للبداية
+
+//     console.log("Circular List:", values.join(" → "));
+//   }
+
+//   // ✅ 3. حذف أول عنصر
+//   removeHead() {
+//     if (!this.head) return;
+
+//     if (this.head === this.tail) {
+//       // عنصر واحد فقط
+//       this.head = this.tail = null;
+//     } else {
+//       this.head = this.head.next;
+//       this.tail.next = this.head;
+//     }
+//   }
+
+//   // ✅ 4. حذف عنصر حسب القيمة
+//   remove(value) {
+//     if (!this.head) return;
+
+//     let current = this.head;
+//     let prev = this.tail;
+
+//     do {
+//       if (current.value === value) {
+//         if (current === this.head) {
+//           this.head = current.next;
+//           this.tail.next = this.head;
+//         } else if (current === this.tail) {
+//           this.tail = prev;
+//           this.tail.next = this.head;
+//         } else {
+//           prev.next = current.next;
+//         }
+//         return;
+//       }
+
+//       prev = current;
+//       current = current.next;
+//     } while (current !== this.head);
+//   }
+
+//   // ✅ 5. البحث عن عنصر
+//   contains(value) {
+//     if (!this.head) return false;
+
+//     let current = this.head;
+
+//     do {
+//       if (current.value === value) return true;
+//       current = current.next;
+//     } while (current !== this.head);
+
+//     return false;
+//   }
+// }
+
+// const list = new CircularLinkedList();
+
+// list.append(10);
+// list.append(20);
+// list.append(30);
+// list.print(); // Circular List: 10 → 20 → 30
+
+// console.log("Contains 20?", list.contains(20)); // true
+// console.log("Contains 50?", list.contains(50)); // false
+
+// list.remove(20);
+// list.print(); // Circular List: 10 → 30
+
+// list.removeHead();
+// list.print(); // Circular List: 30
+
+// class Car{
+// constructor(brand,color){
+//   this.brand=brand;
+//   this.color=color;
+// }
+
+// drive(){
+//   console.log(`${this.color} is driving`);
+
+// }
+
+// }
+
+// const car1=new Car("bmw","red");
+// car1.drive();
+
+
+
+
+
+
+
+
+///////////////////////////////////////
+//design battern
+
+///////////////////////////////////
+
+
+//creatintiol battern
+
+
+////////////////////////////////////////
